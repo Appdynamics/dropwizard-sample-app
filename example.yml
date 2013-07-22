@@ -1,6 +1,6 @@
 template: Hello, %s!
 
-defaultName: Stranger
+defaultName: AppDynamics
 
 # Database settings.
 database:
@@ -17,40 +17,25 @@ database:
   # the JDBC URL
   url: jdbc:hsqldb:target/example
 
-  # override health check query for hsqldb
-  # taken from http://javasplitter.blogspot.com/2011/01/keep-alive-query-in-hsqldb.html
   validationQuery: SELECT * FROM INFORMATION_SCHEMA.SYSTEM_TABLES
 
-# use the simple server factory if you only want to run on a single port
-#server:
-#  type: simple
-#  connector:
-#    type: http
-#    port: 8080
-
 server:
-#  softNofileLimit: 1000
-#  hardNofileLimit: 1000
+  softNofileLimit: 1000
+  hardNofileLimit: 1000
   applicationConnectors:
     - type: http
       port: 8080
     - type: https
       port: 8443
-      keyStore: example.keystore
+      keyStorePath: example.keystore
       keyStorePassword: example
       validateCerts: false
-# this requires the npn-boot library on the JVM's boot classpath
-#    - type: spdy
-#      port: 8445
-#      keyStore: example.keystore
-#      keyStorePassword: example
-#      validateCerts: false
   adminConnectors:
     - type: http
       port: 8081
     - type: https
       port: 8444
-      keyStore: example.keystore
+      keyStorePath: example.keystore
       keyStorePassword: example
       validateCerts: false
 

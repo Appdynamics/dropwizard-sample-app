@@ -1,4 +1,3 @@
-
 # Introduction
 
 The drop wizard example application was developed to, as its name implies, provide examples of some of the features
@@ -29,17 +28,26 @@ As with all the modules the db example is wired up in the `initialize` function 
 
 To test the example application run the following commands.
 
-* To package the example app:
+* To package the example run.
 
         mvn package
 
-* To setup the h2 database:
+* To setup the h2 database run.
 
         java -jar target/dropwizard-example-0.7.0-SNAPSHOT.jar db migrate example.yml
 
-* To run the server:
+* To run the server run.
 
         java -jar target/dropwizard-example-0.7.0-SNAPSHOT.jar server example.yml
+
+* To hit the Hello World example (hit refresh a few times).
+
+	http://localhost:8080/hello-world
+
+* To post data into the application.
+
+	curl -H "Content-Type: application/json" -X POST -d '{"fullName":"Other Person","jobTitle":"Other Title"}' http://localhost:8080/people
+	open http://localhost:8080/people
 
 # Adding The AppDynamics Java Agent
 
